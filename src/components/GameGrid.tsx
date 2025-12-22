@@ -7,12 +7,12 @@ import GameCardSkeleton from "@/components/GameCardSkeleton.tsx";
 
 const GameGrid = () => {
 
-    const skeleton = [1, 2, 3, 4, 5, 6];
+    const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const { data, error, isLoading} = useGames();
     return (
         <>
             {error && <Text>{error}</Text>}
-            <SimpleGrid columns={{sm: 1, md: 2, lg: 3, xl: 5}} gap={10} padding='10px'>
+            <SimpleGrid columns={{sm: 1, md: 2, lg: 3, xl: 5}} gap={3} padding='10px'>
                 {isLoading && skeleton.map(s =>
                     <GameCardContainer>
                         <GameCardSkeleton key={s}/>
