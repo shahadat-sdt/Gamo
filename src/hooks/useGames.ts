@@ -1,6 +1,6 @@
 import useData from "@/hooks/useData.ts";
-import type {Genre} from "@/hooks/useGenres.ts";
 import type {Platform} from "@/hooks/usePlatforms.ts";
+import type {GameQuery} from "@/App.tsx";
 
 
 export interface Game {
@@ -12,14 +12,14 @@ export interface Game {
 }
 
 
-const useGames = (selectedPlatform: Platform | null, selectedGenre: Genre | null) =>
+const useGames = (gameQuery: GameQuery) =>
     useData<Game>('/games', {
         params: {
-            platforms: selectedPlatform?.id,
-            genres: selectedGenre?.id
+            platforms: gameQuery.platform?.id,
+            genres: gameQuery.genre?.id
 
         }
-    }, [selectedPlatform?.id, selectedGenre?.id]);
+    }, [gameQuery]);
 
 
 export default useGames;
